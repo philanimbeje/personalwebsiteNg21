@@ -18,7 +18,7 @@ export class ProjectsService {
           "accessUrl": "http://www.philanimbeje.co.za",
           "hostPlatform": "Github Pges"
         },
-        "projectUrl": "https://github.com/philanimbeje/personalsitewithangular3",
+        "projectUrl": "https://github.com/philanimbeje/personalwebsiteNg21",
         "description": "A simple portfolio project",
         "imageUrl": "https://wallpaperaccess.com/full/2272665.jpg",
         "symbol": "fa-user"
@@ -36,6 +36,20 @@ export class ProjectsService {
         "description": "App using the TVMaze API",
         "imageUrl": "https://wallpaperaccess.com/full/2272665.jpg",
         "symbol": "fa-tv"
+      },
+      {
+        "id":3,
+        "project": "CSS Breath Timing App",
+        "type": "software",
+        "tools": [ "CSS", " JavaScript", " HTML" ],
+        "deployment": {
+          "accessUrl": "https://philanimbeje.github.io/relaxer/",
+          "hostPlatform": "Github"
+        },
+        "projectUrl": "https://github.com/philanimbeje/relaxer",
+        "description": "Simple HTML, CSS & JavaScript App",
+        "imageUrl": "https://wallpaperaccess.com/full/2272665.jpg",
+        "symbol": "fa-lungs"
       }
     ];
   }
