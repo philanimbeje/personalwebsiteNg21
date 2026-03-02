@@ -23,12 +23,18 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npx ng build --configuration production --base-href /your-repo-name/
+        run: npx ng build --configuration production --base-href
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/personalwebsite/browser
+          cname: www.philanimbeje.co.za
+
+
+
+
+
 
 
