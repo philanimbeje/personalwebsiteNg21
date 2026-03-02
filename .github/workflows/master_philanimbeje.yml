@@ -1,65 +1,45 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy Node.js app to Azure Web App - philanimbeje
+name: Build and Deploy to gh-pages
 
 on:
   push:
     branches:
-      - master
-  workflow_dispatch:
+      - master  # or your default branch
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read #This is required for actions/checkout
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js version
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '24.x'
+          node-version: 20
 
-      - name: npm install, build, and test
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular
+        run: npm run build -- --configuration production
+
+      - name: Deploy to gh-pages
         run: |
-          npm install
-          npm run build --if-present
+          DIST_FOLDER="dist/personalwebsite/browser"
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: node-app
-          path: .
+          # Configure git
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
+          # Create orphan branch
+          git checkout --orphan gh-pages
+          git rm -rf .
 
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: node-app
-      
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_12FA97F214F84163968607E2500EEE89 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_FB14CC92C56848DEA74DDA91B1FCBE30 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_9D83B9E18BE44F439023A1D8BB4D4DD8 }}
+          # Copy built files
+          cp -r $DIST_FOLDER/* .
+          touch .nojekyll  # optional for GitHub Pages
 
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'philanimbeje'
-          slot-name: 'Production'
-          package: .
-
-          
+          git add .
+          git commit -m "Deploy Angular build from ${GITHUB_SHA}"
+          git push origin gh-pages --force
