@@ -1,0 +1,17 @@
+<mat-card #tiltImage  class="example-card tilt shadow-xl hover:shadow-2xl">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"><i class="fa {{project().symbol}}"></i></div>
+      <mat-card-title>{{ project().project }}</mat-card-title>
+      <mat-card-subtitle>{{ project().description }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="project().imageUrl" alt="selected photo of project">
+    <mat-card-content>
+      <p>
+        {{ project().tools }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="open(project().projectUrl)">OPEN CODE</button>
+      <button mat-button (click)="launch(project().deployment.accessUrl)">LAUNCH SITE</button>
+    </mat-card-actions>
+  </mat-card>
