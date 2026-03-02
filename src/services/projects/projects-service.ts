@@ -36,20 +36,6 @@ export class ProjectsService {
         "description": "App using the TVMaze API",
         "imageUrl": "https://wallpaperaccess.com/full/2272665.jpg",
         "symbol": "fa-tv"
-      },
-      {
-        "id": 3,
-        "project": "API CRUD Application",
-        "type": "software",
-        "tools": [ "netcore 3.1", " C#", " EntityFrameworkCore", " ClearDb" ],
-        "deployment": {
-          "accessUrl": "https://philanistvshowapi.azurewebsites.net/swagger/",
-          "hostPlatform": "Microsoft Azure"
-        },
-        "projectUrl": "https://github.com/philanimbeje/tvshowproject",
-        "description": "CRUD application using CQRS techniques",
-        "imageUrl": "https://wallpaperaccess.com/full/4239720.jpg",
-        "symbol": "fa-signal"
       }
     ];
   }
