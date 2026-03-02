@@ -34,12 +34,12 @@ export class ProjectsService {
         },
         "projectUrl": "https://github.com/philanimbeje/tvshowapp",
         "description": "App using the TVMaze API",
-        "imageUrl": "https://wallpaperaccess.com/full/2272665.jpg",
+        "imageUrl": "https://wallpaperaccess.com/full/13272.jpg",
         "symbol": "fa-tv"
       },
       {
         "id":3,
-        "project": "CSS Breath Timing App",
+        "project": "Basic HTML, CSS & JS App",
         "type": "software",
         "tools": [ "CSS", " JavaScript", " HTML" ],
         "deployment": {
@@ -47,9 +47,23 @@ export class ProjectsService {
           "hostPlatform": "Github"
         },
         "projectUrl": "https://github.com/philanimbeje/relaxer",
-        "description": "Simple HTML, CSS & JavaScript App",
-        "imageUrl": "https://wallpaperaccess.com/full/2272665.jpg",
+        "description": "A simple breath timer app",
+        "imageUrl": "https://wallpaperaccess.com/full/4794764.jpg",
         "symbol": "fa-lungs"
+      },
+      {
+        "id":4,
+        "project": "Nuget-BasicMathFunction",
+        "type": "software",
+        "tools": [ "C#", "NuGet" ],
+        "deployment": {
+          "accessUrl": "https://www.nuget.org/packages/BasicMathFunctions/",
+          "hostPlatform": "NuGet Package Manager"
+        },
+        "projectUrl": "https://github.com/philanimbeje/BasicMathFunction",
+        "description": "A simple calculation library",
+        "imageUrl": "https://wallpaperaccess.com/full/1664717.jpg",
+        "symbol": "fa-equals"
       }
     ];
   }
