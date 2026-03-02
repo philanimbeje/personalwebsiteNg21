@@ -1,35 +1,45 @@
-name: Deploy Angular to GitHub Pages
+name: Build and Deploy to gh-pages
 
 on:
   push:
-    branches: [ "master" ]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    branches:
+      - master  # or your default branch
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular app
-        run: npm run build -- --configuration production --base-href "/personalwebsiteNg21/"
+      - name: Build Angular
+        run: npm run build -- --configuration production
 
-      - uses: actions/configure-pages@v5
+      - name: Deploy to gh-pages
+        run: |
+          DIST_FOLDER="dist/personalwebsite/browser"
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist/personalwebsite/browser
+          # Configure git
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
-      - uses: actions/deploy-pages@v4
+          # Create orphan branch
+          git checkout --orphan gh-pages
+          git rm -rf .
+
+          # Copy built files
+          cp -r $DIST_FOLDER/* .
+          touch .nojekyll  # optional for GitHub Pages
+
+          git add .
+          git commit -m "Deploy Angular build from ${GITHUB_SHA}"
+          git push origin gh-pages --force
