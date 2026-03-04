@@ -55,7 +55,7 @@ export class ProjectsService {
         "id":4,
         "project": "Nuget-BasicMathFunction",
         "type": "software",
-        "tools": [ "C#", "NuGet" ],
+        "tools": [ "C#", " NuGet" ],
         "deployment": {
           "accessUrl": "https://www.nuget.org/packages/BasicMathFunctions/",
           "hostPlatform": "NuGet Package Manager"
@@ -64,6 +64,20 @@ export class ProjectsService {
         "description": "A simple calculation library",
         "imageUrl": "https://wallpaperaccess.com/full/1664717.jpg",
         "symbol": "fa-equals"
+      },
+      {
+        "id":5,
+        "project": "Simple C# Backend API",
+        "type": "software",
+        "tools": [ "C#", " API", " Swagger", " CQRS Architechture", ],
+        "deployment": {
+          "accessUrl": "https://philanistvshowapi.azurewebsites.net/swagger",
+          "hostPlatform": "MicroSoft Azure"
+        },
+        "projectUrl": "https://github.com/philanimbeje/tvshowproject",
+        "description": "A basic implementation of CQRS",
+        "imageUrl": "https://wallpaperaccess.com/full/4794647.jpg",
+        "symbol": "fa-onion"
       }
     ];
   }
