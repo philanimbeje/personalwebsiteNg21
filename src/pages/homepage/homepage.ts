@@ -3,6 +3,7 @@ import p5 from 'p5';
 import { BouncyBalls } from '../../p5Drawings/bouncy-balls';
 import { ArrowDrag } from '../../p5Drawings/arrow-drag';
 import { StreamingBouncyBalls } from '../../p5Drawings/streaming-bouncy-balls';
+import { ShootingGame } from '../../p5Drawings/shooting-game';
 @Component({
   selector: 'app-homepage',
   imports: [],
@@ -11,7 +12,7 @@ import { StreamingBouncyBalls } from '../../p5Drawings/streaming-bouncy-balls';
 })
 export class Homepage implements OnInit{
   private canvas: any;
-  private randomNumber: number = Math.floor(Math.random() * 3);
+  private randomNumber: number = Math.floor(Math.random() * 4);
   
   ngOnInit(): void {
     const sketch = (sketch: p5) => {
@@ -34,6 +35,10 @@ export class Homepage implements OnInit{
       case 2:
         console.log("ArrowDrag Selected");
         StreamingBouncyBalls.prototype.Draw(sketch);
+        break;
+      case 3:
+        console.log("Shooting Game Selected");
+        ShootingGame.prototype.Draw(sketch);
         break;
       default:
         console.log("Unexpected value.");
