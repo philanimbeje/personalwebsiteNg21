@@ -1,5 +1,5 @@
 import p5 from "p5";
-import { Bullet, Particle, FallingBlock, ShootingGameObject} from "./models/shootinggamemodels";
+import {ShootingGameObject} from "./models/shootinggamemodels";
 
 export class ShootingGame {
     Draw(sketch: p5) {
